@@ -127,6 +127,11 @@ function App() {
 
       {/* Hero */}
       <section className="hero-section">
+        <img
+          src={`${import.meta.env.BASE_URL}aldiouma-hero.png`}
+          alt="Aldiouma Mbaye portrait"
+          className="hero-avatar"
+        />
         <h2 className="hero-title">{heroTitle}</h2>
         {heroText.map((paragraph, index) => (
           <p key={index} className="hero-text">
