@@ -1,8 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Linkedin, Github, Code, Database, Cloud, Cpu } from "lucide-react";
 import "./App.css";
 
 function App() {
+  const [language, setLanguage] = useState("fr");
+
+  const toggleLanguage = () => {
+    setLanguage((prevLang) => (prevLang === "fr" ? "en" : "fr"));
+  };
+
+  const content = {
+    fr: {
+      headerTitle: "Aldiouma Mbaye",
+      headerSubtitle: "Data Engineer | Data Analyst",
+      heroTitle: "Transformer la donnée en décisions stratégiques",
+      heroText: [
+        "Passionné par la donnée et son potentiel à transformer les décisions business, je combine expertise technique en Data Engineering et vision stratégique pour concevoir des systèmes scalables qui convertissent les données brutes en insights actionnables.",
+        "Actuellement en Master 2 Data Engineering à l’École Centrale d’Électronique (ECE) à Paris, je développe des pipelines ETL fiables et performants, y compris en temps réel, déployés sur des environnements Cloud comme AWS et GCP.",
+        "Diplômé d’une licence en informatique à l’Institut Mines-Télécom & SupdeCo Dakar (mention Très Bien), dans le cadre du campus franco-sénégalais, j’ai renforcé mes compétences en France en me focalisant sur les technologies Big Data et Cloud.",
+        "Chez ShopMeAway, j’ai piloté des projets de prédiction des ventes avec Python et Scikit-learn, optimisé des KPI stratégiques et conçu des dashboards interactifs sous Power BI connectés à des bases Snowflake."
+      ],
+      softSkills: [
+        "Communication claire et capacité à collaborer avec des équipes variées",
+        "Esprit d’équipe et gestion efficace des projets",
+        "Résolution de problèmes complexes avec approche analytique",
+        "Adaptabilité et volonté d’apprendre de nouvelles technologies",
+      ],
+    },
+    en: {
+      headerTitle: "Aldiouma Mbaye",
+      headerSubtitle: "Data Engineer | Data Analyst",
+      heroTitle: "Transforming data into strategic decisions",
+      heroText: [
+        "Passionate about data and its potential to transform business decisions, I combine technical expertise in Data Engineering and strategic vision to design scalable systems that turn raw data into actionable insights.",
+        "Currently pursuing a Master’s in Data Engineering at the École Centrale d’Électronique (ECE) in Paris, I develop reliable and efficient ETL pipelines, including real-time deployments on Cloud environments like AWS and GCP.",
+        "Graduated with a degree in Computer Science from Institut Mines-Télécom & SupdeCo Dakar (with honors), I enhanced my skills in France by focusing on Big Data and Cloud technologies.",
+        "At ShopMeAway, I led sales prediction projects using Python and Scikit-learn, optimized strategic KPIs, and designed interactive dashboards in Power BI connected to Snowflake databases."
+      ],
+      softSkills: [
+        "Clear communication and ability to collaborate with diverse teams",
+        "Team spirit and effective project management",
+        "Solving complex problems with an analytical approach",
+        "Adaptability and willingness to learn new technologies",
+      ],
+    },
+  };
+
+  const { headerTitle, headerSubtitle, heroTitle, heroText } = content[language];
+
   const projets = [
     {
       icon: "🚆",
@@ -34,36 +79,60 @@ function App() {
       desc: "Analyse ventes e-commerce, forecast ARIMA, création de rapports Power BI et suivi KPI.",
       link: "https://github.com/ebqydnjni/Projet_StageShopmeaway",
     },
+    {
+      icon: "📈",
+      title: "Valorisation des Données",
+      desc: "Pipeline de valorisation des données avec ingestion, nettoyage, et visualisation avancée.",
+      link: "https://github.com/ebqydnjni/valorisation_Des_Donnes.git",
+    },
   ];
 
   return (
     <div className="app-container">
       {/* Header */}
       <header className="header">
-        <h1 className="header-title">Aldiouma Mbaye</h1>
-        <p className="header-subtitle">Data Engineer |Data Analyst</p>
-        <a
-          href="https://drive.google.com/file/d/1MFKGC48nbxJHaCXkQMHfNvUuPfp6QLNf/view?usp=sharing"
-          className="cv-button"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="header-content">
+          <h1 className="header-title">{headerTitle}</h1>
+          <p className="header-subtitle">{headerSubtitle}</p>
+          <a
+            href="https://drive.google.com/file/d/1MFKGC48nbxJHaCXkQMHfNvUuPfp6QLNf/view?usp=sharing"
+            className="cv-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Télécharger mon CV
+          </a>
+        </div>
+        <button
+          onClick={toggleLanguage}
+          className="language-toggle"
+          style={{
+            position: 'absolute',
+            bottom: '10px',
+            right: '10px',
+            backgroundColor: '#9dbf3d',
+            color: '#FFFFFF',
+            border: 'none',
+            borderRadius: '5px',
+            padding: '10px 15px',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+          }}
         >
-          Télécharger mon CV
-        </a>
+          {language === "fr" ? "🇫🇷 Français" : "🇺🇸 English"}
+        </button>
       </header>
 
       {/* Hero */}
       <section className="hero-section">
-        <img
-          src="/aldiouma-hero.png"
-          alt="Aldiouma Mbaye portrait"
-          className="hero-avatar"
-        />
-        <h2 className="hero-title">Donner du sens à la donnée</h2>
-        <p className="hero-text">
-           Après un an d’expérience en tant que Data Analyst, j’ai choisi de me spécialiser en Data Engineering pour approfondir mon expertise dans le traitement et l’impact des données. Actuellement en Master 2 Data Engineering à l’École Centrale d’Électronique à Paris, je conçois des pipelines fiables, en temps réel et orientés performance. Mon objectif : développer des systèmes de données utiles, robustes et tournés vers l’action.
-        </p>
-
+        <h2 className="hero-title">{heroTitle}</h2>
+        {heroText.map((paragraph, index) => (
+          <p key={index} className="hero-text">
+            {paragraph}
+          </p>
+        ))}
       </section>
 
       {/* Projets */}
@@ -152,31 +221,20 @@ function App() {
           <span className="badge">Azure</span>
           <span className="badge">AWS</span>
         </div>
+
+        {/* Soft Skills */}
         <div className="softskills-list">
           <h3>Soft Skills</h3>
           <ul>
-            <li>Communication claire et capacité à collaborer avec des équipes variées</li>
-            <li>Esprit d’équipe et gestion efficace des projets</li>
-            <li>Résolution de problèmes complexes avec approche analytique</li>
-            <li>Adaptabilité et volonté d’apprendre de nouvelles technologies</li>
+            {content[language].softSkills.map((skill, index) => (
+              <li key={index}>{skill}</li>
+            ))}
           </ul>
         </div>
       </section>
 
-      {/* À propos */}
-      <section className="about-section">
-        <h2 className="section-title">À propos</h2>
-        <p className="about-text">
-          Après un baccalauréat scientifique obtenu en 2021, j’ai intégré une licence en informatique à l’Institut Mines-Télécom & SupdeCo Dakar dans le cadre du campus franco-sénégalais, que j’ai validée en 2024 avec la mention Très Bien.
-          Désireux d’approfondir mes compétences, j’ai choisi de venir en France pour me spécialiser en Data Engineering et je suis actuellement en Master 2 à l’École Centrale d’Électronique (ECE) à Paris.
-          Parallèlement, j’ai acquis une expérience concrète en travaillant comme Data Analyst chez ShopMeAway, où j’ai piloté des projets de prédiction des ventes, optimisé des KPIs, et développé des dashboards interactifs sous Power BI.
-        </p>
-      </section>
-
       {/* Contact */}
-      <section className="contact-section">
-        <h2 className="section-title light">Me contacter</h2>
-        <p className="contact-text">Discutons de vos projets, ou simplement faites connaissance !</p>
+      <footer className="footer">
         <div className="contact-links">
           <a href="mailto:aldioumambaye20@gmail.com" className="contact-link">
             <Mail size={20} /> <span>aldioumambaye20@gmail.com</span>
@@ -189,12 +247,8 @@ function App() {
           >
             <Linkedin size={20} /> <span>LinkedIn</span>
           </a>
+          <p className="contact-phone">Téléphone : +33 7 84 73 16 64</p>
         </div>
-        <p className="contact-phone">Téléphone : +33 7 84 73 16 64</p>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
         © {new Date().getFullYear()} Aldiouma Mbaye – Portfolio conçu avec React & Vite
       </footer>
     </div>
