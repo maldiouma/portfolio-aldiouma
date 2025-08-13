@@ -53,37 +53,37 @@ function App() {
       icon: "🚆",
       title: "Prédiction trafic SNCF",
       desc: "Modèles ML temps réel pour prédire les retards et améliorer la régulation ferroviaire.",
-      link: "https://github.com/ebqydnjni/sncf-trafic-prediction",
+      link: "https://github.com/maldiouma/sncf-trafic-prediction",
     },
     {
       icon: "💳",
       title: "Détection de fraude",
       desc: "Streaming Spark/Kafka, détection en ligne des anomalies + dashboard Power BI en temps réel.",
-      link: "https://github.com/ebqydnjni/fraude-temps-reel",
+      link: "https://github.com/maldiouma/fraude-temps-reel",
     },
     {
       icon: "❤️",
       title: "CardioMind",
       desc: "Projet IA santé : prédiction de maladies cardiaques avec visualisation personnalisée des risques.",
-      link: "https://github.com/ebqydnjni/CardioMind",
+      link: "https://github.com/maldiouma/CardioMind",
     },
     {
       icon: "📊",
       title: "Pipeline Big Data",
       desc: "Architecture distribuée Hadoop + Spark avec ingestion, nettoyage, ML et export Power BI.",
-      link: "https://github.com/ebqydnjni/PROJET-BIGDATA",
+      link: "https://github.com/maldiouma/PROJET-BIGDATA",
     },
     {
       icon: "🛍️",
       title: "Stage ShopMeAway",
       desc: "Analyse ventes e-commerce, forecast ARIMA, création de rapports Power BI et suivi KPI.",
-      link: "https://github.com/ebqydnjni/Projet_StageShopmeaway",
+      link: "https://github.com/maldiouma/Projet_StageShopmeaway",
     },
     {
       icon: "📈",
       title: "Valorisation des Données",
       desc: "Pipeline de valorisation des données avec ingestion, nettoyage, et visualisation avancée.",
-      link: "https://github.com/ebqydnjni/valorisation_Des_Donnes.git",
+      link: "https://github.com/maldiouma/valorisation_Des_Donnes.git",
     },
   ];
 
